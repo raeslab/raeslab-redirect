@@ -9,7 +9,7 @@ plugin, which GitHub Pages supports out of the box.
 |---------------------------------------|-------------------------------------|
 | `https://raeslab.org/`                | `https://raeslab.sites.vib.be/`     |
 | `https://raeslab.org/software/BMIS/`  | `https://code.raeslab.org/BMIS/`    |
-| any other (unknown) path              | 404 page → lab homepage after 5 s   |
+| any other (unknown) path              | 404 page linking to the lab site    |
 
 ## Repository layout
 
@@ -20,7 +20,9 @@ raeslab-redirect/
     ├── _config.yml        Jekyll config, enables jekyll-redirect-from
     ├── CNAME              custom domain: raeslab.org
     ├── index.html         redirect for the root of raeslab.org
-    ├── 404.html           catch-all for unknown paths
+    ├── 404.html           catch-all for unknown paths (VIB-styled)
+    ├── assets/            vendored font, logo and icons for 404.html
+    │   └── README.md      where they came from and under which licence
     └── redirects/         one small file per redirect
         └── BMIS.md
 ```
@@ -175,3 +177,9 @@ Then open <http://localhost:4000/software/BMIS/>.
   printed link breaks, or someone else can buy it.
 - Search engines see a 404 status for paths caught by `404.html`, so give every
   URL that appears in a paper its own file in `docs/redirects/`.
+- `404.html` does not redirect on its own: it explains that the link is out of
+  date and offers the lab site and `code.raeslab.org`. Visitors choose where to
+  go, so nobody is pulled away mid-read.
+- It is styled after the VIB website, with the font, logo and icons vendored
+  into `docs/assets/` so the page loads nothing from third-party servers. See
+  `docs/assets/README.md` before swapping any of them out.

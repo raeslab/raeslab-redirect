@@ -5,12 +5,291 @@ permalink: /404.html
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Page not found – RAES Lab</title>
-  <meta http-equiv="refresh" content="5; url=https://raeslab.sites.vib.be/">
-  <link rel="canonical" href="https://raeslab.sites.vib.be/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>That link is out of date – RAES Lab</title>
+  <meta name="robots" content="noindex">
+
+  <!-- Asset paths are root-absolute on purpose: this page is served for any
+       unknown path (/software/x/y/...), so relative paths would break. -->
+  <link rel="preload" href="/assets/fonts/nunito-sans-latin.woff2" as="font"
+        type="font/woff2" crossorigin>
+  <style>
+    /* Nunito Sans (Google Fonts, SIL Open Font License 1.1) — vendored.
+       Variable font: one file covers weights 200–1000. */
+    @font-face {
+      font-family: "Nunito Sans";
+      font-style: normal;
+      font-weight: 200 1000;
+      font-display: swap;
+      src: url("/assets/fonts/nunito-sans-latin.woff2") format("woff2");
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+                     U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F,
+                     U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF,
+                     U+FFFD;
+    }
+
+    /* VIB "entityone" theme tokens, taken from the live lab site. */
+    :root {
+      --primary-color: #00264F;
+      --secondary-color: #1cbbba;
+      --tertiary-color: #A0B2D4;
+      --quarternary-color: #2A529E;
+      --background-color-light: #ECF4F8;
+      --background-color-dark: #00254F;
+    }
+
+    *, ::after, ::before { box-sizing: border-box; }
+
+    html {
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-color: #fff;
+      color: var(--primary-color);
+      font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.42;
+    }
+
+    h1, h2 {
+      /* The VIB theme sets Degular here; it is an Adobe Fonts (Typekit)
+         licence tied to the vib.be kit, so it cannot be vendored. Nunito
+         Sans at weight 500 is the closest in-family stand-in. */
+      margin: 0 0 .71rem;
+      font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+      font-weight: 500;
+      line-height: 1;
+    }
+
+    /* ---------- header ---------- */
+
+    .region--header {
+      padding: 17px 0;
+      border-bottom: 1px solid rgba(0, 38, 79, .08);
+    }
+
+    .region__inner {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    @media (min-width: 900px) {
+      .region__inner { padding: 0 40px; }
+    }
+
+    .site-logo img {
+      display: block;
+      height: 52px;
+      width: auto;
+    }
+
+    /* ---------- main ---------- */
+
+    main {
+      flex: 1 0 auto;
+      display: flex;
+      align-items: center;
+      background-color: var(--background-color-light);
+      padding: 64px 0 72px;
+    }
+
+    .eyebrow {
+      margin: 0 0 1rem;
+      font-size: .8125rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--secondary-color);
+    }
+
+    h1 {
+      font-size: 2.25rem;
+      max-width: 18ch;
+    }
+
+    @media (min-width: 900px) {
+      h1 { font-size: 3rem; }
+    }
+
+    .lead {
+      margin: 1.25rem 0 2.25rem;
+      font-size: 1.125rem;
+      max-width: 46ch;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    /* ---------- buttons (VIB geometric-arrow treatment) ---------- */
+
+    .btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      margin: 0 20px 10px 0;
+      padding: 14px 24px 15px 32px;
+      border: 1px solid var(--secondary-color);
+      border-radius: 3px;
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 18px;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      overflow: hidden;
+      transition-property: background, color, border;
+      transition-duration: .5s;
+      transition-timing-function: cubic-bezier(.19, 1, .22, 1);
+    }
+
+    /* The arrow is a 3-shape strip anchored to its right edge: at 6px only the
+       solid triangle shows, at 18px the diamond slides into view. */
+    .btn::after {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 8px;
+      margin-left: 16px;
+      background: transparent url("/assets/img/arrow.svg") no-repeat 100% 50% / auto 100%;
+      transition-property: width;
+      transition-duration: .5s;
+      transition-timing-function: cubic-bezier(.19, 1, .22, 1);
+    }
+
+    .btn:hover::after,
+    .btn:focus::after,
+    .btn:active::after { width: 18px; }
+
+    .btn--default {
+      color: #fff;
+      background-color: var(--secondary-color);
+      border-color: var(--secondary-color);
+      z-index: 5;
+    }
+
+    .btn--secondary {
+      color: var(--secondary-color);
+      background-color: #fff;
+      border-color: var(--secondary-color);
+      z-index: 5;
+    }
+
+    /* Teal wipes in from the left, then the label flips to white. */
+    .btn--secondary::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0;
+      background-color: transparent;
+      transition: all .35s;
+      z-index: -1;
+    }
+
+    .btn--secondary:hover::before,
+    .btn--secondary:focus::before,
+    .btn--secondary:active::before {
+      width: 100%;
+      background-color: var(--secondary-color);
+    }
+
+    .btn--secondary::after {
+      background-image: url("/assets/img/arrow-dark.svg");
+    }
+
+    .btn--secondary:hover,
+    .btn--secondary:focus,
+    .btn--secondary:active { color: #fff; }
+
+    .btn--secondary:hover::after,
+    .btn--secondary:focus::after,
+    .btn--secondary:active::after {
+      background-image: url("/assets/img/arrow.svg");
+    }
+
+    .btn:focus-visible {
+      outline: 2px solid var(--primary-color);
+      outline-offset: 3px;
+    }
+
+    .note {
+      margin: 2.5rem 0 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--tertiary-color);
+      font-size: .9375rem;
+      max-width: 46ch;
+    }
+
+    /* ---------- footer ---------- */
+
+    footer {
+      flex-shrink: 0;
+      background-color: var(--background-color-dark);
+      color: #fff;
+      padding: 28px 0;
+      font-size: .875rem;
+    }
+
+    footer a { color: var(--secondary-color); }
+
+    footer a:hover,
+    footer a:focus { text-decoration: none; }
+
+    footer p { margin: 0; }
+  </style>
 </head>
 <body>
-  <p>This page could not be found. You will be redirected to the
-     <a href="https://raeslab.sites.vib.be/">RAES Lab homepage</a> in a few seconds.</p>
+  <header class="region--header">
+    <div class="region__inner">
+      <a href="https://raeslab.sites.vib.be/" class="site-logo" rel="home">
+        <img src="/assets/img/raeslab-logo.png"
+             alt="RAES Lab — VIB-KU Leuven Center for Microbiology"
+             width="200" height="52">
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <div class="region__inner">
+      <p class="eyebrow">Page not found</p>
+      <h1>That link is out of date</h1>
+      <p class="lead">
+        You've probably arrived from an older paper or bookmark. Our site has
+        moved &mdash; most things are still available, just at a new address.
+      </p>
+
+      <div class="actions">
+        <a class="btn btn--default" href="https://raeslab.sites.vib.be/">RAES Lab website</a>
+        <a class="btn btn--secondary" href="https://code.raeslab.org/">Software &amp; tools</a>
+      </div>
+
+      <p class="note">
+        Still can't find it? Let us know which paper the link came from and
+        we'll point you to the right place.
+      </p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="region__inner">
+      <p>
+        RAES Lab &middot; VIB-KU Leuven Center for Microbiology &middot;
+        <a href="https://raeslab.sites.vib.be/">vib.be</a>
+      </p>
+    </div>
+  </footer>
 </body>
 </html>

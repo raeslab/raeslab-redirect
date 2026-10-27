@@ -11,3 +11,4 @@ plugins:
 exclude:
   - Gemfile
   - Gemfile.lock
+  - assets/README.md
