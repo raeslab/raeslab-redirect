@@ -118,11 +118,26 @@ Point the apex domain to GitHub Pages with these records:
 | AAAA  | `@`               | `2606:50c0:8001::153`       |
 | AAAA  | `@`               | `2606:50c0:8002::153`       |
 | AAAA  | `@`               | `2606:50c0:8003::153`       |
-| CNAME | `www`             | `<github-org>.github.io.`   |
+| CNAME | `www`             | `raeslab.github.io.`        |
 
-Replace `<github-org>` with the GitHub account or organisation that owns this
-repository (e.g. `raeslab.github.io`). With the `www` record in place, GitHub
-redirects `www.raeslab.org` to `raeslab.org` automatically.
+With the `www` record in place, GitHub redirects `www.raeslab.org` to
+`raeslab.org` automatically.
+
+#### Coexisting with code.raeslab.org
+
+The organisation site (`raeslab/raeslab.github.io`) already uses the custom
+domain `code.raeslab.org`. This repository is a separate *project* site with
+its own custom domain (`raeslab.org`), which GitHub Pages supports:
+
+- `code.raeslab.org` keeps its existing CNAME record → `raeslab.github.io`.
+  Leave it as it is.
+- `raeslab.org` (A/AAAA records above) is served by this repository because
+  of `docs/CNAME`. GitHub picks the right site based on the domain name.
+- Other project repos without their own custom domain (e.g. `raeslab/BMIS`)
+  stay at `code.raeslab.org/<repo>/`, as before.
+- Without a custom domain this repository would appear at
+  `code.raeslab.org/raeslab-redirect/`. Setting `raeslab.org` as its custom
+  domain moves it off there.
 
 Notes:
 
