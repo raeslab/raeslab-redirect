@@ -1,0 +1,13 @@
+# Jekyll configuration for the raeslab.org redirect site.
+# GitHub Pages builds this folder (docs/) automatically.
+
+title: RAES Lab
+url: "https://raeslab.org"
+
+plugins:
+  - jekyll-redirect-from
+
+# Don't publish these files
+exclude:
+  - Gemfile
+  - Gemfile.lock
