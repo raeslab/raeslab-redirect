@@ -71,6 +71,27 @@ live site.
 | `/software/QMP_temporal/`<br>`/software/QMP_temporal/index.html` | [temporal_variability_microbiome_qmp](https://github.com/raeslab/temporal_variability_microbiome_qmp) |
 | `/software/gbms.html` | <https://code.raeslab.org/GBMs/> |
 | `/software/gmms.html` | <https://code.raeslab.org/GMMs/> |
+| `/software/conet.html` | <https://apps.cytoscape.org/apps/conet> |
+| `/software/lotus.html` | <https://lotus2.earlham.ac.uk/> |
+
+**CoNet** and **LotuS** were only ever signposts on `raeslab.org`; both pointed at
+`psbweb05.psb.ugent.be`, which is gone (404), and CoNet also at
+`systemsbiology.vub.ac.be`, which no longer resolves in DNS.
+
+- **CoNet** now points at the Cytoscape App Store, the one surviving home — the
+  38 MB plugin JAR still downloads from there. Be aware that the App Store page
+  itself still links to both dead sites. There is no source repository. The
+  original tutorials and documentation survive only in the Internet Archive:
+  <http://web.archive.org/web/2015/http://psbweb05.psb.ugent.be/conet/documentation.php>
+- **LotuS** points at **LotuS2** (<https://lotus2.earlham.ac.uk/>,
+  [hildebra/lotus2](https://github.com/hildebra/lotus2)), the maintained successor
+  by Falk Hildebrand, who wrote the original in the lab. Note this is a newer
+  tool, not the LotuS v1 the 2014 paper describes. The old v1 site is archived —
+  <http://web.archive.org/web/2016/http://psbweb05.psb.ugent.be/lotus/> — but the
+  archive captured only its pages, never the `lotus_*_1.40.tar.gz` or
+  `sdmsource.tar.gz` packages, so v1 itself appears to be lost. The redirect goes
+  to LotuS2 rather than the archive so that visitors land on software they can
+  actually run.
 
 Notes on the two that have no companion site:
 
@@ -92,11 +113,23 @@ Notes on the two that have no companion site:
   404. Until someone triggers that workflow, the redirects above deliberately
   point at the repositories and at GitHub raw URLs, which do work. Once the sites
   are live, the two page-level redirects can be switched over.
+- **`/companion/gutsequencedb/` — to decide.** The Gut Sequence Database was a
+  real in-house resource, not a signpost: 823 annotated human gut reference
+  genomes compiled from the HMP reference collection (accessed 18 March 2018),
+  served as FASTA and GenBank, plus `project_catalog.csv` covering 745 of them
+  and a copy of the IGC gene catalog. **Its data files are gone.** The Internet
+  Archive captured the HTML pages
+  (<http://web.archive.org/web/2019/http://www.raeslab.org/companion/gutsequencedb/index.html>)
+  but never the files under `data/`, so unless the lab still has them the
+  downloads cannot be restored. The upstream sources it was built from are both
+  still live: the [HMP reference genome catalog](https://www.hmpdacc.org/hmp/catalog/)
+  and [NCBI BioProject 28331](https://www.ncbi.nlm.nih.gov/bioproject/28331).
+  No redirect is in place; it falls through to the 404 page for now.
 - Old URLs found in the archive with **no** migrated home yet:
-  `/companion/gutsequencedb/`, `/software/conet.html`, `/software/lotus.html`,
   `/software/omixer.html`, `/software/gomixer.tar.gz`, `/software/QMP/`,
   `/software/QMP.R` and `/software/COVID19_respiratory_microbiome/`. They
-  currently fall through to the 404 page.
+  currently fall through to the 404 page. (`omixer` is being dealt with
+  separately.)
 - Deep file links that exist in the archive but are not individually redirected:
   the `fgfp-gwas`, `vlaams_darmflora_project` and `suppdata` table/figure sets.
   Their landing pages are redirected, so visitors reach the right site but have
