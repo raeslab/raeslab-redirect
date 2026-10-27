@@ -17,7 +17,11 @@ Every old URL below was confirmed against the Internet Archive (so the paths are
 the ones that really existed, not guesses), and every target was checked to
 return HTTP 200. `W1–W13` style ranges mean one redirect file per number.
 
-All old paths are relative to `https://raeslab.org`. Both the `ocean_interactome`
+All old paths are relative to `https://raeslab.org`; the `www.raeslab.org` forms
+printed in most papers are 301'd to the apex domain by GitHub Pages, keeping the
+path, so they land on the same redirects. Alternate spellings listed under
+`redirect_from` take two hops (alias → canonical path → target); the canonical
+path takes one. Both the `ocean_interactome`
 (underscore, the real old folder) and `ocean-interactome` (hyphen, as printed in
 the Science references) spellings are covered, as are the malformed variants that
 appear in print.
