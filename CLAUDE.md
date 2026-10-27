@@ -19,10 +19,26 @@ plugin, one of the few plugins GitHub Pages whitelists. It is enabled in `docs/_
   domain instead of appearing under `code.raeslab.org/raeslab-redirect/`. The org site
   (`raeslab/raeslab.github.io`) separately owns `code.raeslab.org` — the redirect targets.
   Do not remove or change `CNAME` without understanding that split.
-- `docs/redirects/*.md` — one front-matter-only file per old URL. `permalink` is the old path,
-  `redirect_to` the new URL; the plugin generates `<permalink>/index.html` with a meta refresh,
-  a JS redirect and a `canonical` link. Filenames are cosmetic; **`permalink` values must be
-  unique across the whole site**.
+- `docs/redirects/**/*.md` — one front-matter-only file per migrated resource, grouped into
+  `companion/`, `ocean-interactome/`, `ocean-carbon-export/` and `software/`. `permalink` is
+  the old path, `redirect_to` the new URL, and `redirect_from` lists alternate spellings
+  (underscore vs hyphen folders, the `tablesW13.xlsx` missing-slash typo). The plugin
+  generates `<permalink>/index.html` with a meta refresh, a JS redirect and a `canonical`
+  link. Filenames and subfolders are cosmetic; **every `permalink` and `redirect_from` value
+  must be unique across the whole site** or the build breaks. The full old→new table lives in
+  `README.md`.
+
+When adding redirects, two things are worth repeating because they were established by
+measurement, not assumption:
+- **Check the real old paths against the Internet Archive** rather than trusting the URL as
+  printed in a paper (`http://web.archive.org/cdx/search/cdx?url=raeslab.org/companion*&fl=original&collapse=urlkey`).
+  That is how `/software/QMP temporal` was shown to really be `/software/QMP_temporal/`.
+- **GitHub Pages collapses duplicate slashes** before matching, so malformed printed URLs like
+  `figures//W1.pdf` need no redirect of their own.
+- Avoid `%` in a `permalink`; it is not safe to feed to Jekyll and risks breaking the build.
+- Migrated data files are not served by the project Pages sites (those only publish `docs/`);
+  the repos link to `github.com/raeslab/<repo>/raw/main/...`, so deep file redirects target
+  raw URLs.
 - `docs/index.html` — root redirect (front matter only, no `permalink` needed).
 - `docs/404.html` — catch-all; a hand-written page styled to match the VIB `entityone` theme
   (no auto-redirect), offering the lab site and `code.raeslab.org`. It is served with an HTTP

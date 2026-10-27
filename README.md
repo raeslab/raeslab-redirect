@@ -8,8 +8,95 @@ plugin, which GitHub Pages supports out of the box.
 | From                                  | To                                  |
 |---------------------------------------|-------------------------------------|
 | `https://raeslab.org/`                | `https://raeslab.sites.vib.be/`     |
-| `https://raeslab.org/software/BMIS/`  | `https://code.raeslab.org/BMIS/`    |
+| the old companion and software URLs   | see [Redirects in place](#redirects-in-place) |
 | any other (unknown) path              | 404 page linking to the lab site    |
+
+## Redirects in place
+
+Every old URL below was confirmed against the Internet Archive (so the paths are
+the ones that really existed, not guesses), and every target was checked to
+return HTTP 200. `W1–W13` style ranges mean one redirect file per number.
+
+All old paths are relative to `https://raeslab.org`. Both the `ocean_interactome`
+(underscore, the real old folder) and `ocean-interactome` (hyphen, as printed in
+the Science references) spellings are covered, as are the malformed variants that
+appear in print.
+
+### Companion sites
+
+| Old URL | New target |
+|---|---|
+| `/companion/ocean-interactome.html`<br>`/companion/ocean_interactome/` | [Tara-Oceans-Plankton-Interactome](https://github.com/raeslab/Tara-Oceans-Plankton-Interactome) |
+| `/companion/ocean-carbon-export.html`<br>`/companion/ocean_carbon_export/` | [Tara-Oceans-Plankton-Networks](https://github.com/raeslab/Tara-Oceans-Plankton-Networks) |
+| `/companion/vlaams-darmflora-project.html`<br>`/companion/vlaams_darmflora_project/` | <https://code.raeslab.org/FGFP-Gut-Microbiome-Variation/> |
+| `/companion/fgfp-gwas/` | <https://code.raeslab.org/fgfp-gwas/> |
+| `/companion/stool-consistency.html`<br>`/companion/stool_consistency/` | <https://code.raeslab.org/Stool-Consistency-Gut-Microbiota/> |
+| `/companion/suppdata/`<br>`/companion/suppdata/index.html`<br>`/companion/suppdata/downloads.html` | <https://code.raeslab.org/Small-Intestinal-Microbiota/> |
+| `/companion/gmms/` | <https://code.raeslab.org/GMMs/> |
+
+### Tara Oceans deep links
+
+These are the individual files cited in Lima-Mendez *et al.* (Science 2015) and
+Guidi *et al.* (Nature 2016). They point at GitHub raw URLs, which is where the
+migrated repositories actually serve their data from.
+
+| Old URL | New target |
+|---|---|
+| `/companion/ocean_interactome/tables/W1.xlsx` – `W13.xlsx` | `…/Tara-Oceans-Plankton-Interactome/raw/main/docs/data/tables/W<n>.xlsx` |
+| `/companion/ocean_interactome/tablesW1.xlsx` – `tablesW13.xlsx`<br>(missing slash, as printed) | same as above |
+| `/companion/ocean_interactome/figures/W1.pdf` – `W9.pdf` | `…/raw/main/docs/data/figures/W<n>.pdf` |
+| `/companion/ocean_interactome/companion_figures/W1.pdf` – `W9.pdf` | same as above |
+| `/companion/ocean_interactome/figures/W9.fas` | `…/raw/main/docs/data/figures/W9.fas` |
+| `/companion/ocean_interactome/Accompanying_Material.docx` | `…/raw/main/docs/data/Accompanying_Material.docx` |
+| `/companion/ocean_carbon_export/tables/SI.tables.xlsx` | `…/Tara-Oceans-Plankton-Networks/raw/main/docs/data/tables/SI.tables.xlsx` |
+| `/companion/ocean_carbon_export/tables/norm.abundance.matrices.zip` | `…/raw/main/docs/data/tables/norm.abundance.matrices.zip` |
+
+The double-slash forms printed in the references (`figures//W1.pdf`,
+`/companion//ocean_interactome/…`) need no redirect files of their own: GitHub
+Pages collapses duplicate slashes before matching, which was verified against the
+live site.
+
+### Software pages
+
+| Old URL | New target |
+|---|---|
+| `/software/BMIS/` | <https://code.raeslab.org/BMIS/> |
+| `/software/QMP2/` | <https://code.raeslab.org/QMP-PSC-IBD/> |
+| `/software/QMP2/QMP.matrix.tsv` | `…/QMP-PSC-IBD/raw/main/supplementary/QMP.matrix.tsv` |
+| `/software/BMT/`<br>`/software/BMT/index.html` | [benchmark_microbiome_transformations](https://github.com/raeslab/benchmark_microbiome_transformations) |
+| `/software/QMP_temporal/`<br>`/software/QMP_temporal/index.html` | [temporal_variability_microbiome_qmp](https://github.com/raeslab/temporal_variability_microbiome_qmp) |
+| `/software/gbms.html` | <https://code.raeslab.org/GBMs/> |
+| `/software/gmms.html` | <https://code.raeslab.org/GMMs/> |
+
+Notes on the two that have no companion site:
+
+- **BMT** has no GitHub Pages site, so the redirect points at the repository.
+  The Zenodo deposit (<https://doi.org/10.5281/zenodo.4719508>) is the stable
+  fallback if that ever moves.
+- **QMP temporal** is printed in Vandeputte *et al.* (Nat Commun 2021) as
+  `http://www.raeslab.org/software/QMP temporal`, with a space. The Internet
+  Archive shows the real path was `/software/QMP_temporal/`, so the space is a
+  typesetting artifact. A `%20` variant is deliberately *not* included, because a
+  permalink containing `%` is not safe to feed to Jekyll.
+
+### Known gaps
+
+- **The two Tara Oceans sites are not published.** Both repositories have Pages
+  configured for GitHub Actions and a correct `jekyll-gh-pages.yml` workflow
+  (`source: ./docs`), but the workflow has never run, so
+  `https://code.raeslab.org/Tara-Oceans-Plankton-{Interactome,Networks}/` return
+  404. Until someone triggers that workflow, the redirects above deliberately
+  point at the repositories and at GitHub raw URLs, which do work. Once the sites
+  are live, the two page-level redirects can be switched over.
+- Old URLs found in the archive with **no** migrated home yet:
+  `/companion/gutsequencedb/`, `/software/conet.html`, `/software/lotus.html`,
+  `/software/omixer.html`, `/software/gomixer.tar.gz`, `/software/QMP/`,
+  `/software/QMP.R` and `/software/COVID19_respiratory_microbiome/`. They
+  currently fall through to the 404 page.
+- Deep file links that exist in the archive but are not individually redirected:
+  the `fgfp-gwas`, `vlaams_darmflora_project` and `suppdata` table/figure sets.
+  Their landing pages are redirected, so visitors reach the right site but have
+  to pick the file themselves.
 
 ## Repository layout
 
@@ -24,7 +111,11 @@ raeslab-redirect/
     ├── assets/            vendored font, logo and icons for 404.html
     │   └── README.md      where they came from and under which licence
     └── redirects/         one small file per redirect
-        └── BMIS.md
+        ├── BMIS.md
+        ├── companion/              companion-site landing pages
+        ├── ocean-carbon-export/    Guidi et al. data files
+        ├── ocean-interactome/      Lima-Mendez et al. tables and figures
+        └── software/               /software/ pages and data files
 ```
 
 ## How it works
