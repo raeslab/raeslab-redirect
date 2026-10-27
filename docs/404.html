@@ -233,6 +233,24 @@ permalink: /404.html
       max-width: 46ch;
     }
 
+    .note a {
+      color: var(--primary-color);
+      font-weight: 600;
+      text-decoration: underline;
+      text-decoration-color: var(--secondary-color);
+      text-decoration-thickness: 2px;
+      text-underline-offset: 3px;
+      transition: color .3s cubic-bezier(.19, 1, .22, 1);
+    }
+
+    .note a:hover,
+    .note a:focus { color: var(--secondary-color); }
+
+    .note a:focus-visible {
+      outline: 2px solid var(--primary-color);
+      outline-offset: 3px;
+    }
+
     /* ---------- footer ---------- */
 
     footer {
@@ -277,8 +295,10 @@ permalink: /404.html
       </div>
 
       <p class="note">
-        Still can't find it? Let us know which paper the link came from and
-        we'll point you to the right place.
+        Still can't find it?
+        <a href="mailto:jeroen.raes@kuleuven.vib.be?subject=Broken%20link%20on%20raeslab.org">Let
+        us know</a> which paper the link came from and we'll point you to the
+        right place.
       </p>
     </div>
   </main>
