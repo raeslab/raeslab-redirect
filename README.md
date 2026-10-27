@@ -73,6 +73,8 @@ live site.
 | `/software/gmms.html` | <https://code.raeslab.org/GMMs/> |
 | `/software/conet.html` | <https://apps.cytoscape.org/apps/conet> |
 | `/software/lotus.html` | <https://lotus2.earlham.ac.uk/> |
+| `/software/QMP/` | [raeslab/QMP](https://github.com/raeslab/QMP) |
+| `/software/QMP.R` | `…/raeslab/QMP/refs/heads/master/QMP.R` (raw) |
 
 **CoNet** and **LotuS** were only ever signposts on `raeslab.org`; both pointed at
 `psbweb05.psb.ugent.be`, which is gone (404), and CoNet also at
@@ -126,10 +128,14 @@ Notes on the two that have no companion site:
   and [NCBI BioProject 28331](https://www.ncbi.nlm.nih.gov/bioproject/28331).
   No redirect is in place; it falls through to the 404 page for now.
 - Old URLs found in the archive with **no** migrated home yet:
-  `/software/omixer.html`, `/software/gomixer.tar.gz`, `/software/QMP/`,
-  `/software/QMP.R` and `/software/COVID19_respiratory_microbiome/`. They
-  currently fall through to the 404 page. (`omixer` is being dealt with
-  separately.)
+  `/software/omixer.html`, `/software/gomixer.tar.gz` and
+  `/software/COVID19_respiratory_microbiome/`. They currently fall through to the
+  404 page. (`omixer` is being dealt with separately.)
+
+`/software/QMP.R` points at a `raw.githubusercontent.com` URL pinned to the
+`master` branch, so it serves the file itself rather than GitHub's HTML view —
+which is what the printed link promised. It will follow any future change to that
+file, and will break if the branch is ever renamed.
 - Deep file links that exist in the archive but are not individually redirected:
   the `fgfp-gwas`, `vlaams_darmflora_project` and `suppdata` table/figure sets.
   Their landing pages are redirected, so visitors reach the right site but have
