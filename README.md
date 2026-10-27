@@ -75,6 +75,7 @@ live site.
 | `/software/lotus.html` | <https://lotus2.earlham.ac.uk/> |
 | `/software/QMP/` | [raeslab/QMP](https://github.com/raeslab/QMP) |
 | `/software/QMP.R` | `…/raeslab/QMP/refs/heads/master/QMP.R` (raw) |
+| `/software/COVID19_respiratory_microbiome/` | [covid19_respiratory_microbiome](https://github.com/raeslab/covid19_respiratory_microbiome) |
 
 **CoNet** and **LotuS** were only ever signposts on `raeslab.org`; both pointed at
 `psbweb05.psb.ugent.be`, which is gone (404), and CoNet also at
@@ -128,9 +129,8 @@ Notes on the two that have no companion site:
   and [NCBI BioProject 28331](https://www.ncbi.nlm.nih.gov/bioproject/28331).
   No redirect is in place; it falls through to the 404 page for now.
 - Old URLs found in the archive with **no** migrated home yet:
-  `/software/omixer.html`, `/software/gomixer.tar.gz` and
-  `/software/COVID19_respiratory_microbiome/`. They currently fall through to the
-  404 page. (`omixer` is being dealt with separately.)
+  `/software/omixer.html` and `/software/gomixer.tar.gz`. They currently fall
+  through to the 404 page. (`omixer` is being dealt with separately.)
 
 `/software/QMP.R` points at a `raw.githubusercontent.com` URL pinned to the
 `master` branch, so it serves the file itself rather than GitHub's HTML view —
